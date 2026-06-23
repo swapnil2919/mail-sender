@@ -37,6 +37,24 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    // The JavaMail libraries both ship META-INF license/notice files,
+    // which collide when packaging the APK. Exclude the duplicates.
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/NOTICE.md",
+                "META-INF/NOTICE",
+                "META-INF/NOTICE.txt",
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE",
+                "META-INF/LICENSE.txt",
+                "META-INF/DEPENDENCIES",
+                "META-INF/INDEX.LIST",
+                "META-INF/*.kotlin_module"
+            )
+        }
+    }
 }
 
 dependencies {
